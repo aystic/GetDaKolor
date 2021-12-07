@@ -4,6 +4,9 @@ const background = document.querySelector(".container");
 let hex;
 colorInput.addEventListener("keyup", () => {
 	hex = colorInput.value;
+	if (hex === "") {
+		background.style.backgroundColor = "black";
+	}
 	hex = hex.toUpperCase();
 	let validity = isHexValid();
 	if (validity) {
@@ -21,7 +24,7 @@ colorInput.addEventListener("keyup", () => {
 	} else {
 		hex = "#000";
 	}
-	console.log(`Output color : ${hex}`);
+	// console.log(`Output color : ${hex}`);
 	background.style.backgroundColor = hex;
 });
 
@@ -34,9 +37,12 @@ const validChars = "0123456789ABCDEF";
 function isHexValid() {
 	if (hex.length !== 0 && hex[0] !== "#") {
 		hex = "#" + hex;
+		if (hex.length === 10) {
+			hex = hex.slice(0, 9);
+		}
 		colorInput.value = hex;
 	}
-	console.log(`Fixed input : ${hex}`);
+	// console.log(`Fixed input : ${hex}`);
 	for (let i = 1; i < hex.length; i++) {
 		if (validChars.includes(hex[i])) {
 			continue;
