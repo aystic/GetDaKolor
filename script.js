@@ -10,15 +10,25 @@ colorInput.addEventListener("keyup", () => {
 	hex = hex.toUpperCase();
 	let validity = isHexValid();
 	if (validity) {
-		let i = hex.length;
-		while (i <= 6) {
-			hex += "0";
-			i++;
-		}
-		if (i > 6) {
-			while (i <= 8) {
-				hex += "F";
+		if (hex.length <= 4) {
+			//support for 3 char hex code
+			let i = hex.length;
+			while (i < 4) {
+				hex += 0;
 				i++;
+			}
+		} else {
+			//support for 6 and 8 char hex code
+			let i = hex.length;
+			while (i <= 6) {
+				hex += "0";
+				i++;
+			}
+			if (i > 6) {
+				while (i <= 8) {
+					hex += "F";
+					i++;
+				}
 			}
 		}
 	} else {
