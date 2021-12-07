@@ -6,10 +6,10 @@
 img {
 	position: fixed;
 	z-index: -1;
-	width: 100vh;
+	width: 100vw;
 	top: 50vh;
 	left: 50vw;
-	transform: translate(-25vw, -50vh);
+	transform: translate(-50vw, -50vh);
 }
 .container {
 	position: fixed;
